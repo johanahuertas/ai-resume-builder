@@ -1,121 +1,85 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+    <div style={styles.page}>
+      <header style={styles.header}>
+        <h1 style={styles.title}>AI Resume Builder</h1>
+        <p style={styles.subtitle}>
+          Create and improve your resume with AI assistance.
+        </p>
+      </header>
+
+      <main style={styles.main}>
+        <section style={styles.panel}>
+          <h2 style={styles.panelTitle}>Resume Editor</h2>
+          <p style={styles.text}>This is where the form sections will go:</p>
+          <ul style={styles.list}>
+            <li>Personal Info</li>
+            <li>Summary</li>
+            <li>Education</li>
+            <li>Experience</li>
+            <li>Projects</li>
+            <li>Skills</li>
+          </ul>
+        </section>
+
+        <section style={styles.panel}>
+          <h2 style={styles.panelTitle}>Live Preview</h2>
+          <p style={styles.text}>
+            This is where the resume preview will appear.
           </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        </section>
+      </main>
+    </div>
+  );
 }
 
-export default App
+const styles = {
+  page: {
+    minHeight: "100vh",
+    backgroundColor: "#f8fafc",
+    color: "#0f172a",
+    fontFamily: "Arial, sans-serif",
+    padding: "32px",
+    boxSizing: "border-box",
+  },
+  header: {
+    marginBottom: "32px",
+  },
+  title: {
+    margin: 0,
+    fontSize: "36px",
+    fontWeight: "700",
+  },
+  subtitle: {
+    marginTop: "8px",
+    fontSize: "16px",
+    color: "#475569",
+  },
+  main: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "24px",
+  },
+  panel: {
+    backgroundColor: "#ffffff",
+    borderRadius: "16px",
+    padding: "24px",
+    boxShadow: "0 10px 25px rgba(0, 0, 0, 0.08)",
+    minHeight: "420px",
+  },
+  panelTitle: {
+    marginTop: 0,
+    marginBottom: "16px",
+    fontSize: "24px",
+  },
+  text: {
+    color: "#475569",
+    fontSize: "15px",
+  },
+  list: {
+    paddingLeft: "20px",
+    lineHeight: 1.8,
+  },
+};
+
+export default App;
