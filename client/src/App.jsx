@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 function App() {
+  const [summary, setSummary] = useState("");
+
   return (
     <div style={styles.page}>
       <header style={styles.header}>
@@ -9,9 +13,17 @@ function App() {
       </header>
 
       <main style={styles.main}>
+        {/* LEFT SIDE - EDITOR */}
         <section style={styles.panel}>
           <h2 style={styles.panelTitle}>Resume Editor</h2>
-          <p style={styles.text}>This is where the form sections will go:</p>
+
+          <textarea
+            placeholder="Write your professional summary..."
+            value={summary}
+            onChange={(e) => setSummary(e.target.value)}
+            style={styles.textarea}
+          />
+
           <ul style={styles.list}>
             <li>Personal Info</li>
             <li>Summary</li>
@@ -22,10 +34,12 @@ function App() {
           </ul>
         </section>
 
+        {/* RIGHT SIDE - PREVIEW */}
         <section style={styles.panel}>
           <h2 style={styles.panelTitle}>Live Preview</h2>
-          <p style={styles.text}>
-            This is where the resume preview will appear.
+
+          <p style={styles.previewText}>
+            {summary || "Your summary will appear here..."}
           </p>
         </section>
       </main>
@@ -72,9 +86,19 @@ const styles = {
     marginBottom: "16px",
     fontSize: "24px",
   },
-  text: {
-    color: "#475569",
-    fontSize: "15px",
+  textarea: {
+    width: "100%",
+    height: "120px",
+    padding: "12px",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
+    marginBottom: "20px",
+    fontSize: "14px",
+  },
+  previewText: {
+    fontSize: "16px",
+    color: "#334155",
+    lineHeight: 1.6,
   },
   list: {
     paddingLeft: "20px",
