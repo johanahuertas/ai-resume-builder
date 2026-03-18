@@ -1,6 +1,9 @@
 import { useState } from "react";
 
 function App() {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [summary, setSummary] = useState("");
 
   return (
@@ -13,34 +16,68 @@ function App() {
       </header>
 
       <main style={styles.main}>
-        {/* LEFT SIDE - EDITOR */}
         <section style={styles.panel}>
           <h2 style={styles.panelTitle}>Resume Editor</h2>
 
-          <textarea
-            placeholder="Write your professional summary..."
-            value={summary}
-            onChange={(e) => setSummary(e.target.value)}
-            style={styles.textarea}
-          />
+          <div style={styles.section}>
+            <h3 style={styles.sectionTitle}>Personal Info</h3>
 
-          <ul style={styles.list}>
-            <li>Personal Info</li>
-            <li>Summary</li>
-            <li>Education</li>
-            <li>Experience</li>
-            <li>Projects</li>
-            <li>Skills</li>
-          </ul>
+            <input
+              type="text"
+              placeholder="Full name"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              style={styles.input}
+            />
+
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              style={styles.input}
+            />
+
+            <input
+              type="text"
+              placeholder="Phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              style={styles.input}
+            />
+          </div>
+
+          <div style={styles.section}>
+            <h3 style={styles.sectionTitle}>Professional Summary</h3>
+
+            <textarea
+              placeholder="Write your professional summary..."
+              value={summary}
+              onChange={(e) => setSummary(e.target.value)}
+              style={styles.textarea}
+            />
+          </div>
         </section>
 
-        {/* RIGHT SIDE - PREVIEW */}
         <section style={styles.panel}>
           <h2 style={styles.panelTitle}>Live Preview</h2>
 
-          <p style={styles.previewText}>
-            {summary || "Your summary will appear here..."}
-          </p>
+          <div style={styles.previewBlock}>
+            <h1 style={styles.previewName}>
+              {fullName || "Your Name"}
+            </h1>
+
+            <p style={styles.previewContact}>
+              {email || "your.email@example.com"} | {phone || "(123) 456-7890"}
+            </p>
+          </div>
+
+          <div style={styles.previewBlock}>
+            <h3 style={styles.previewSectionTitle}>Professional Summary</h3>
+            <p style={styles.previewText}>
+              {summary || "Your summary will appear here..."}
+            </p>
+          </div>
         </section>
       </main>
     </div>
@@ -83,8 +120,25 @@ const styles = {
   },
   panelTitle: {
     marginTop: 0,
-    marginBottom: "16px",
+    marginBottom: "20px",
     fontSize: "24px",
+  },
+  section: {
+    marginBottom: "28px",
+  },
+  sectionTitle: {
+    marginTop: 0,
+    marginBottom: "12px",
+    fontSize: "18px",
+  },
+  input: {
+    width: "100%",
+    padding: "12px",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
+    marginBottom: "12px",
+    fontSize: "14px",
+    boxSizing: "border-box",
   },
   textarea: {
     width: "100%",
@@ -92,17 +146,31 @@ const styles = {
     padding: "12px",
     borderRadius: "8px",
     border: "1px solid #ccc",
-    marginBottom: "20px",
     fontSize: "14px",
+    boxSizing: "border-box",
+    resize: "vertical",
+  },
+  previewBlock: {
+    marginBottom: "24px",
+  },
+  previewName: {
+    margin: 0,
+    fontSize: "30px",
+  },
+  previewContact: {
+    marginTop: "8px",
+    color: "#475569",
+  },
+  previewSectionTitle: {
+    marginBottom: "10px",
+    fontSize: "18px",
+    borderBottom: "1px solid #e2e8f0",
+    paddingBottom: "6px",
   },
   previewText: {
     fontSize: "16px",
     color: "#334155",
     lineHeight: 1.6,
-  },
-  list: {
-    paddingLeft: "20px",
-    lineHeight: 1.8,
   },
 };
 
